@@ -1,0 +1,1 @@
+window.BRUH_BUILD_MEDIA={idleVideo:null,idlePoster:null,dynoSheet:null,power:{kw:297,boostPsi:18,fuel:'98',source:'Owner supplied',measurementBasis:null},camshafts:{make:null,model:null,duration:null,lift:null}};
