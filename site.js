@@ -38,7 +38,8 @@ const form=document.querySelector('#build-draft');
 form?.addEventListener('submit',event=>{
  event.preventDefault();if(!form.reportValidity())return;
  const values=new FormData(form);
- const text=['SKYLINE SOCIETY — BUILD STORY DRAFT','',`Public name: ${values.get('name')}`,`Car: ${values.get('car')}`,'','THE STORY',values.get('story'),'','PHOTO CREDITS & PERMISSIONS',values.get('credits')||'To add','', 'Prepared locally. Nothing has been sent to Skyline Society.'].join('\n');
+ const ja=window.SkylineLanguage?.current==='ja';
+ const text=ja?['SKYLINE SOCIETY — カスタムストーリーの下書き','',`公開名：${values.get('name')}`,`車両：${values.get('car')}`,'','ストーリー',values.get('story'),'','写真のクレジットと掲載許可',values.get('credits')||'後で追加','','この端末で作成しました。Skyline Societyには送信されていません。'].join('\n'):['SKYLINE SOCIETY — BUILD STORY DRAFT','',`Public name: ${values.get('name')}`,`Car: ${values.get('car')}`,'','THE STORY',values.get('story'),'','PHOTO CREDITS & PERMISSIONS',values.get('credits')||'To add','', 'Prepared locally. Nothing has been sent to Skyline Society.'].join('\n');
  const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='skyline-society-build-story.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
  document.querySelector('#draft-status').textContent='Your draft download is ready. Nothing has been submitted. You can share it with the Society when you’re ready.';
 });
