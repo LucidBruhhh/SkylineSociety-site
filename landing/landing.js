@@ -20,11 +20,11 @@ function render(){
  scheduled=false;
  if(!metrics)return;
  const {w,h}=metrics;
- const mobile=w<650;
- // Portrait: crop towards the centre/right to retain the mirror and gauges.
- const base=mobile?Math.max(w/1020,h/1080):Math.max(w/1440,h/1080);
- const x0=mobile?w*.5-780*base:(w-1440*base)/2;
- const y0=0;
+ const mobile=w<=650&&h>w;
+ // Portrait phones show the full cabin width above the introduction.
+ const base=mobile?w/1440:Math.max(w/1440,h/1080);
+ const x0=(w-1440*base)/2;
+ const y0=mobile?Math.max(88,h*.15):0;
  const p=preference.matches?0:clamp((scrollY-metrics.top)/metrics.distance);
  if(p===lastProgress)return;
  lastProgress=p;
